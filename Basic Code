@@ -1,0 +1,11 @@
+import moviepy.editor
+from tkinter.filedialog import *
+from playsound import playsound
+video=askopenfilename()
+video=moviepy.editor.VideoFileClip(video)
+audio=video.audio
+
+audio.write_audiofile(r"sample.mp3")
+print("song is converted!")
+
+playsound('\python\PFSD/sample.mp3')
