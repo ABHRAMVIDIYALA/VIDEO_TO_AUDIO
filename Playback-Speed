@@ -1,0 +1,14 @@
+from pydub import AudioSegment
+sound = AudioSegment.from_file("sample.mp3") # we have to give the audio file 
+
+def speed_change(sound, speed=1.0): # Thios is default playback-speed
+   
+    sound_with_altered_frame_rate = sound._spawn(sound.raw_data, overrides={
+         "frame_rate": int(sound.frame_rate * speed)
+      })
+    
+    return sound_with_altered_frame_rate.set_frame_rate(sound.frame_rate)
+
+
+slow_sound = speed_change(sound, 0.75) # audio will be in the slow motion
+fast_sound = speed_change(sound, 2.0)  # audio will be some fast then the above one
